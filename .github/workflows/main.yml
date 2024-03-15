@@ -1,15 +1,12 @@
 on: [push]
 
 jobs:
-    hello_world_job:
+    test_action:
         runs-on: ubuntu-latest
-        name: A job to say hello
+        name: Test this action
         steps:
-            - name: Hello world action step
-              id: hello
-              uses: Estanz0/set-gh-env-vars@v1.1
+            - name: Set Repository Variable
+              uses: Estanz0/set-gh-env-vars@v1.3
               with:
-                  who-to-greet: 'Mona the Octocat'
-            # Use the output from the `hello` step
-            - name: Get the output time
-              run: echo "The time was ${{ steps.hello.outputs.time }}"
+                  name: 'Test v1.3'
+                  value: 'Test v1.3'
