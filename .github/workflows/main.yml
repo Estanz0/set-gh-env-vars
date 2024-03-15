@@ -1,12 +1,15 @@
 on: [push]
 
+env:
+    GITHUB_TOKEN: ${{ secrets.GH_PAT_TOKEN }}
+
 jobs:
     test_action:
         runs-on: ubuntu-latest
         name: Test this action
         steps:
             - name: Set Repository Variable
-              uses: Estanz0/set-gh-env-vars@v1.3
+              uses: Estanz0/set-gh-env-vars@v1.4
               with:
-                  name: 'Test v1.3'
-                  value: 'Test v1.3'
+                  name: 'Test v1.4'
+                  value: 'Test v1.4'
