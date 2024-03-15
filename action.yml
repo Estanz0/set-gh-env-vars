@@ -1,15 +1,27 @@
-name: 'Hello World'
+name: 'Set Github Variable'
 description: 'Greet someone and record the time'
 inputs:
-  who-to-greet: # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
-    type: string
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+    environment-name:
+        description:
+            'Github environment name. If not provided, will set repository
+            variable / secret'
+        required: false
+        default: null
+        type: string
+    is-secret:
+        description: 'If true, will set secret. If false, will set variable'
+        required: false
+        default: false
+        type: boolean
+    name:
+        description: 'The name of the varaible / secret'
+        required: false
+        type: string
+    value:
+        description: 'The value of the varaible / secret'
+        required: true
+        type: string
 
 runs:
-  using: node20
-  main: dist/index.js
+    using: node20
+    main: dist/index.js
