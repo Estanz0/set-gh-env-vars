@@ -9,7 +9,7 @@ jobs:
         name: Test this action
         steps:
             - name: Set Repository Variable
-              uses: Estanz0/set-gh-env-vars@v1.2
+              uses: Estanz0/set-gh-env-vars@v1.3
               with:
                   name: 'Test v1'
                   value: 'Test v1'

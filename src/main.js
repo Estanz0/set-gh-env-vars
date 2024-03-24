@@ -12,7 +12,7 @@ async function run() {
     try {
         // Get the input from the action
         const environmentName = core.getInput('environment-name')
-        const isSecret = core.getInput('is-secret')
+        const isSecret = core.getBooleanInput('is-secret')
         const name = core.getInput('name', { required: true })
         const value = core.getInput('value', { required: true })
         const token = core.getInput('myToken', { required: true })

@@ -17,8 +17,6 @@ const encryptSecret = async function (key, value) {
             sodium.base64_variants.ORIGINAL
         )
 
-        console.log('Encrypted value:', encrypted_value)
-
         return encrypted_value
     })
 }
