@@ -132,12 +132,12 @@ async function run() {
             } else {
                 // Variable
                 const response = await octokit.request(
-                    'GET /repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}',
+                    'GET /repos/{owner}/{repo}/environments/{environment_name}/variables/{name}',
                     {
                         owner: owner,
                         repo: repo,
                         environment_name: environmentName,
-                        secret_name: name,
+                        name: name,
                         headers: {
                             'X-GitHub-Api-Version': '2022-11-28'
                         }
@@ -148,12 +148,12 @@ async function run() {
                 if (status === 200) {
                     // Update
                     await octokit.request(
-                        'PATCH /repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}',
+                        'PATCH /repos/{owner}/{repo}/environments/{environment_name}/variables/{name}',
                         {
                             owner: owner,
                             repo: repo,
                             environment_name: environmentName,
-                            secret_name: name,
+                            name: name,
                             value: value,
                             headers: {
                                 'X-GitHub-Api-Version': '2022-11-28'
@@ -163,12 +163,12 @@ async function run() {
                 } else {
                     // Create
                     await octokit.request(
-                        'POST /repos/{owner}/{repo}/environments/{environment_name}/secrets',
+                        'POST /repos/{owner}/{repo}/environments/{environment_name}/variables',
                         {
                             owner: owner,
                             repo: repo,
                             environment_name: environmentName,
-                            secret_name: name,
+                            name: name,
                             value: value,
                             headers: {
                                 'X-GitHub-Api-Version': '2022-11-28'

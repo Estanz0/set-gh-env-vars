@@ -7,5 +7,5 @@ npm run bundle
 
 git add .
 git commit -m "build"
-git tag -a -m "First attempt" v1.4
+git tag -a -m "First attempt" v1.5
 git push --follow-tags

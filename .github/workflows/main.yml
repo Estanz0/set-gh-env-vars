@@ -9,7 +9,7 @@ jobs:
         name: Repository Variable
         steps:
             - name: Set Repository Variable
-              uses: Estanz0/set-gh-env-vars@v1.4
+              uses: Estanz0/set-gh-env-vars@v1.5
               with:
                   name: 'Testv1'
                   value: 'Test v1'
@@ -21,7 +21,7 @@ jobs:
         name: Environment Variable
         steps:
             - name: Set Repository Variable
-              uses: Estanz0/set-gh-env-vars@v1.4
+              uses: Estanz0/set-gh-env-vars@v1.5
               with:
                   name: 'Testv1'
                   value: 'Test v1'
