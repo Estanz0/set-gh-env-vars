@@ -41846,11 +41846,15 @@ function wrappy (fn, cb) {
 // ESM COMPAT FLAG
 __nccwpck_require__.r(__webpack_exports__);
 
+// NAMESPACE OBJECT: ./src/util.js
+var util_namespaceObject = {};
+__nccwpck_require__.r(util_namespaceObject);
+
 ;// CONCATENATED MODULE: ./src/util.js
 const sodium = __nccwpck_require__(713)
 
 // Encrypt the value using libsodium
-async function encrypt(key, value) {
+const encrypt = async function (key, value) {
     //Check if libsodium is ready and then proceed.
     sodium.ready.then(() => {
         // Convert the secret and key to a Uint8Array.
@@ -41869,6 +41873,8 @@ async function encrypt(key, value) {
         return encrypted_value
     })
 }
+
+/* harmony default export */ const util = ((/* unused pure expression or super */ null && (encrypt)));
 
 ;// CONCATENATED MODULE: ./src/main.js
 /* module decorator */ module = __nccwpck_require__.hmd(module);
@@ -41917,7 +41923,7 @@ async function run() {
 
             publicKeyValue = data.key
             publicKeyId = data.key_id
-            encryptedValue = encrypt(publicKeyValue, value)
+            encryptedValue = (0,util_namespaceObject.encrypt)(publicKeyValue, value)
         }
 
         if (!environmentName) {
