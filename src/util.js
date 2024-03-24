@@ -3,7 +3,7 @@ const sodium = require('libsodium-wrappers')
 // Encrypt the value using libsodium
 const encryptSecret = async function (key, value) {
     //Check if libsodium is ready and then proceed.
-    sodium.ready.then(() => {
+    return sodium.ready.then(() => {
         // Convert the secret and key to a Uint8Array.
         const binkey = sodium.from_base64(key, sodium.base64_variants.ORIGINAL)
         const binsec = sodium.from_string(value)
@@ -16,6 +16,8 @@ const encryptSecret = async function (key, value) {
             encBytes,
             sodium.base64_variants.ORIGINAL
         )
+
+        console.log('Encrypted value:', encrypted_value)
 
         return encrypted_value
     })
