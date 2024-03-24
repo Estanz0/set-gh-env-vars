@@ -20,11 +20,36 @@ jobs:
         runs-on: ubuntu-latest
         name: Environment Variable
         steps:
-            - name: Set Repository Variable
+            - name: Set Environment Variable
               uses: Estanz0/set-gh-env-vars@v1.6
               with:
                   name: 'Testv1'
                   value: 'Test v1'
                   is-secret: false
+                  environment-name: 'dev'
+                  myToken: ${{ secrets.GH_PAT_TOKEN }}
+
+    test_action3:
+        runs-on: ubuntu-latest
+        name: Repository Secret
+        steps:
+            - name: Set Repository Secret
+              uses: Estanz0/set-gh-env-vars@v1.6
+              with:
+                  name: 'Testv1'
+                  value: 'Test v1'
+                  is-secret: true
+                  myToken: ${{ secrets.GH_PAT_TOKEN }}
+
+    test_action4:
+        runs-on: ubuntu-latest
+        name: Environment Secret
+        steps:
+            - name: Set Environment Secret
+              uses: Estanz0/set-gh-env-vars@v1.6
+              with:
+                  name: 'Testv1'
+                  value: 'Test v1'
+                  is-secret: true
                   environment-name: 'dev'
                   myToken: ${{ secrets.GH_PAT_TOKEN }}
