@@ -41839,46 +41839,10 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
-/***/ 4959:
-/***/ ((module, __webpack_exports__, __nccwpck_require__) => {
+/***/ 1713:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-"use strict";
-// ESM COMPAT FLAG
-__nccwpck_require__.r(__webpack_exports__);
-
-// NAMESPACE OBJECT: ./src/util.js
-var util_namespaceObject = {};
-__nccwpck_require__.r(util_namespaceObject);
-
-;// CONCATENATED MODULE: ./src/util.js
-const sodium = __nccwpck_require__(713)
-
-// Encrypt the value using libsodium
-const encrypt = async function (key, value) {
-    //Check if libsodium is ready and then proceed.
-    sodium.ready.then(() => {
-        // Convert the secret and key to a Uint8Array.
-        const binkey = sodium.from_base64(key, sodium.base64_variants.ORIGINAL)
-        const binsec = sodium.from_string(value)
-
-        // Encrypt the secret using libsodium
-        const encBytes = sodium.crypto_box_seal(binsec, binkey)
-
-        // Convert the encrypted Uint8Array to Base64
-        const encrypted_value = sodium.to_base64(
-            encBytes,
-            sodium.base64_variants.ORIGINAL
-        )
-
-        return encrypted_value
-    })
-}
-
-/* harmony default export */ const util = ((/* unused pure expression or super */ null && (encrypt)));
-
-;// CONCATENATED MODULE: ./src/main.js
-/* module decorator */ module = __nccwpck_require__.hmd(module);
-
+const { encrypt } = __nccwpck_require__(6254)
 
 const core = __nccwpck_require__(2186)
 const github = __nccwpck_require__(5438)
@@ -41923,7 +41887,7 @@ async function run() {
 
             publicKeyValue = data.key
             publicKeyId = data.key_id
-            encryptedValue = (0,util_namespaceObject.encrypt)(publicKeyValue, value)
+            encryptedValue = encrypt(publicKeyValue, value)
         }
 
         if (!environmentName) {
@@ -42057,6 +42021,42 @@ async function run() {
 module.exports = {
     run
 }
+
+
+/***/ }),
+
+/***/ 6254:
+/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
+
+"use strict";
+__nccwpck_require__.r(__webpack_exports__);
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const sodium = __nccwpck_require__(713)
+
+// Encrypt the value using libsodium
+const encrypt = async function (key, value) {
+    //Check if libsodium is ready and then proceed.
+    sodium.ready.then(() => {
+        // Convert the secret and key to a Uint8Array.
+        const binkey = sodium.from_base64(key, sodium.base64_variants.ORIGINAL)
+        const binsec = sodium.from_string(value)
+
+        // Encrypt the secret using libsodium
+        const encBytes = sodium.crypto_box_seal(binsec, binkey)
+
+        // Convert the encrypted Uint8Array to Base64
+        const encrypted_value = sodium.to_base64(
+            encBytes,
+            sodium.base64_variants.ORIGINAL
+        )
+
+        return encrypted_value
+    })
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (encrypt);
 
 
 /***/ }),
@@ -45393,8 +45393,8 @@ exports.LRUCache = LRUCache;
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			id: moduleId,
-/******/ 			loaded: false,
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
 /******/ 	
@@ -45407,27 +45407,26 @@ exports.LRUCache = LRUCache;
 /******/ 			if(threw) delete __webpack_module_cache__[moduleId];
 /******/ 		}
 /******/ 	
-/******/ 		// Flag the module as loaded
-/******/ 		module.loaded = true;
-/******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/harmony module decorator */
+/******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
-/******/ 		__nccwpck_require__.hmd = (module) => {
-/******/ 			module = Object.create(module);
-/******/ 			if (!module.children) module.children = [];
-/******/ 			Object.defineProperty(module, 'exports', {
-/******/ 				enumerable: true,
-/******/ 				set: () => {
-/******/ 					throw new Error('ES Modules may not assign module.exports or exports.*, Use ESM export syntax, instead: ' + module.id);
+/******/ 		// define getter functions for harmony exports
+/******/ 		__nccwpck_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__nccwpck_require__.o(definition, key) && !__nccwpck_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
-/******/ 			});
-/******/ 			return module;
+/******/ 			}
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
@@ -45452,7 +45451,7 @@ var __webpack_exports__ = {};
 /**
  * The entrypoint for the action.
  */
-const { run } = __nccwpck_require__(4959)
+const { run } = __nccwpck_require__(1713)
 
 run()
 
