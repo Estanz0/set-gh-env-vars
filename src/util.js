@@ -1,7 +1,7 @@
 const sodium = require('libsodium-wrappers')
 
 // Encrypt the value using libsodium
-const encrypt = async function (key, value) {
+const encryptSecret = async function (key, value) {
     //Check if libsodium is ready and then proceed.
     sodium.ready.then(() => {
         // Convert the secret and key to a Uint8Array.
@@ -21,4 +21,6 @@ const encrypt = async function (key, value) {
     })
 }
 
-export default encrypt
+module.exports = {
+    encryptSecret
+}

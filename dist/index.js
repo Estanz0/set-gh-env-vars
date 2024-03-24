@@ -41842,7 +41842,7 @@ function wrappy (fn, cb) {
 /***/ 1713:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const { encrypt } = __nccwpck_require__(6254)
+const { encryptSecret } = __nccwpck_require__(6254)
 
 const core = __nccwpck_require__(2186)
 const github = __nccwpck_require__(5438)
@@ -41887,7 +41887,7 @@ async function run() {
 
             publicKeyValue = data.key
             publicKeyId = data.key_id
-            encryptedValue = encrypt(publicKeyValue, value)
+            encryptedValue = encryptSecret(publicKeyValue, value)
         }
 
         if (!environmentName) {
@@ -42026,17 +42026,12 @@ module.exports = {
 /***/ }),
 
 /***/ 6254:
-/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-"use strict";
-__nccwpck_require__.r(__webpack_exports__);
-/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 const sodium = __nccwpck_require__(713)
 
 // Encrypt the value using libsodium
-const encrypt = async function (key, value) {
+const encryptSecret = async function (key, value) {
     //Check if libsodium is ready and then proceed.
     sodium.ready.then(() => {
         // Convert the secret and key to a Uint8Array.
@@ -42056,7 +42051,9 @@ const encrypt = async function (key, value) {
     })
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (encrypt);
+module.exports = {
+    encryptSecret
+}
 
 
 /***/ }),
@@ -45412,34 +45409,6 @@ exports.LRUCache = LRUCache;
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__nccwpck_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__nccwpck_require__.o(definition, key) && !__nccwpck_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__nccwpck_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";

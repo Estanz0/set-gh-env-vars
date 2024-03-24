@@ -1,4 +1,4 @@
-const { encrypt } = require('./util')
+const { encryptSecret } = require('./util')
 
 const core = require('@actions/core')
 const github = require('@actions/github')
@@ -43,7 +43,7 @@ async function run() {
 
             publicKeyValue = data.key
             publicKeyId = data.key_id
-            encryptedValue = encrypt(publicKeyValue, value)
+            encryptedValue = encryptSecret(publicKeyValue, value)
         }
 
         if (!environmentName) {
