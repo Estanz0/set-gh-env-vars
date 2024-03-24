@@ -9,7 +9,7 @@ jobs:
         name: Repository Variable
         steps:
             - name: Set Repository Variable
-              uses: Estanz0/set-gh-env-vars@v1.6
+              uses: Estanz0/set-gh-env-vars@v1.7
               with:
                   name: 'Testv1'
                   value: 'Test v1'
@@ -21,7 +21,7 @@ jobs:
         name: Environment Variable
         steps:
             - name: Set Environment Variable
-              uses: Estanz0/set-gh-env-vars@v1.6
+              uses: Estanz0/set-gh-env-vars@v1.7
               with:
                   name: 'Testv1'
                   value: 'Test v1'
@@ -34,7 +34,7 @@ jobs:
         name: Repository Secret
         steps:
             - name: Set Repository Secret
-              uses: Estanz0/set-gh-env-vars@v1.6
+              uses: Estanz0/set-gh-env-vars@v1.7
               with:
                   name: 'Testv1'
                   value: 'Test v1'
@@ -46,7 +46,7 @@ jobs:
         name: Environment Secret
         steps:
             - name: Set Environment Secret
-              uses: Estanz0/set-gh-env-vars@v1.6
+              uses: Estanz0/set-gh-env-vars@v1.7
               with:
                   name: 'Testv1'
                   value: 'Test v1'

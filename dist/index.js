@@ -41887,7 +41887,7 @@ async function run() {
 
             publicKeyValue = data.key
             publicKeyId = data.key_id
-            encryptedValue = encryptSecret(publicKeyValue, value)
+            encryptedValue = await encryptSecret(publicKeyValue, value)
         }
 
         if (!environmentName) {
