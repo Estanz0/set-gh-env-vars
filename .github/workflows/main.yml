@@ -13,4 +13,4 @@ jobs:
               with:
                   name: 'Test v1.6'
                   value: 'Test v1.6'
-                  token: ${{ secrets.GH_PAT_TOKEN }}
+                  myToken: ${{ secrets.GH_PAT_TOKEN }}

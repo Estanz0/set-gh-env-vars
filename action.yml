@@ -21,7 +21,7 @@ inputs:
         description: 'The value of the varaible / secret'
         required: true
         type: string
-    token:
+    myToken:
         description: 'Github token'
         required: true
         type: string

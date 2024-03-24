@@ -41859,7 +41859,7 @@ async function run() {
         const isSecret = core.getInput('is-secret')
         const name = core.getInput('name', { required: true })
         const value = core.getInput('value', { required: true })
-        const token = core.getInput('token', { required: true })
+        const token = core.getInput('myToken', { required: true })
 
         // Get context from the action
         const owner = github.context.repo.owner
