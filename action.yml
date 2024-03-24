@@ -21,6 +21,10 @@ inputs:
         description: 'The value of the varaible / secret'
         required: true
         type: string
+    token:
+        description: 'Github token'
+        required: true
+        type: string
 
 runs:
     using: node20
