@@ -62,20 +62,29 @@ async function run() {
                 )
             } else {
                 // Variable
-                const response = await octokit.request(
-                    'GET /repos/{owner}/{repo}/actions/variables/{name}',
-                    {
-                        owner: owner,
-                        repo: repo,
-                        name: name,
-                        headers: {
-                            'X-GitHub-Api-Version': '2022-11-28'
+                let variableExists = false
+                try {
+                    const response = await octokit.request(
+                        'GET /repos/{owner}/{repo}/actions/variables/{name}',
+                        {
+                            owner: owner,
+                            repo: repo,
+                            name: name,
+                            headers: {
+                                'X-GitHub-Api-Version': '2022-11-28'
+                            }
                         }
+                    )
+                    variableExists = true
+                } catch (error) {
+                    if (error.status !== 404) {
+                        throw error
+                    } else {
+                        variableExists = false
                     }
-                )
-                const status = response.status
+                }
 
-                if (status === 200) {
+                if (variableExists) {
                     // Update
                     await octokit.request(
                         'PATCH /repos/{owner}/{repo}/actions/variables/{name}',
