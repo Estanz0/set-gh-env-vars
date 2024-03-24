@@ -4,9 +4,9 @@ env:
     GITHUB_TOKEN: ${{ secrets.GH_PAT_TOKEN }}
 
 jobs:
-    test_action:
+    test_action1:
         runs-on: ubuntu-latest
-        name: Test this action
+        name: Repository Variable
         steps:
             - name: Set Repository Variable
               uses: Estanz0/set-gh-env-vars@v1.4
@@ -14,4 +14,17 @@ jobs:
                   name: 'Testv1'
                   value: 'Test v1'
                   is-secret: false
+                  myToken: ${{ secrets.GH_PAT_TOKEN }}
+
+    test_action2:
+        runs-on: ubuntu-latest
+        name: Environment Variable
+        steps:
+            - name: Set Repository Variable
+              uses: Estanz0/set-gh-env-vars@v1.4
+              with:
+                  name: 'Testv1'
+                  value: 'Test v1'
+                  is-secret: false
+                  environment-name: 'dev'
                   myToken: ${{ secrets.GH_PAT_TOKEN }}
