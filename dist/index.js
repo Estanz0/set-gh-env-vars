@@ -41857,13 +41857,13 @@ async function run() {
         // Get the input from the action
         const environmentName = core.getInput('environment-name')
         const isSecret = core.getInput('is-secret')
-        const name = core.getInput('name')
-        const value = core.getInput('value')
+        const name = core.getInput('name', { required: true })
+        const value = core.getInput('value', { required: true })
+        const token = core.getInput('token', { required: true })
 
         // Get context from the action
         const owner = github.context.repo.owner
         const repo = github.context.repo.repo
-        const token = github.context.token
 
         // Create GitHub client
         const octokit = new Octokit({ auth: token })
